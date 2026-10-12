@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>محمد علاء الدين — Website Builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800&family=Cairo:wght@700;800;900&family=Amiri:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=El+Messiri:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============ BASE (shared by all views) ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{overflow-x:hidden;background:#F3F2EE}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+ul{list-style:none}
+input,select,textarea{font:inherit}
+option{color:#111}
+section{scroll-margin-top:90px}
+.ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+[dir=rtl] .flip{transform:scaleX(-1)}
+.ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+.view{display:none;min-height:100vh;line-height:1.6;overflow-x:clip}
+.view.on{display:block}
+.w{max-width:1200px;margin:0 auto;padding-inline:28px}
+.rv{opacity:0;transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none!important;filter:none!important}
+.ok{display:none}
+.sent .ok{display:block}
+.back{display:none;position:fixed;bottom:20px;inset-inline-start:20px;z-index:90;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;background:#111113;color:#fff;font:600 13px 'Readex Pro',sans-serif;border:1px solid rgba(255,255,255,.2);box-shadow:0 10px 30px rgba(0,0,0,.35);transition:.25s}
+.back:hover{background:#5B3DF5}
+.inproj .back{display:inline-flex}
+[dir=ltr] .back .ic{transform:scaleX(-1)}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fadeup{from{opacity:0;transform:translateY(12px)}}
+@keyframes grow{from{height:0}}
+@keyframes floaty{50%{transform:translateY(-12px)}}
+
+/* ============ PORTFOLIO ============ */
+#v-home{
+  --ink:#111113;--mu:#6B6B70;--ln:#E2E0DA;--ac:#5B3DF5;
+  background:#F3F2EE;color:var(--ink);font-family:'Readex Pro',sans-serif;
+  .rv{transform:translateY(24px)}
+  .top{display:flex;justify-content:space-between;align-items:center;padding-block:22px}
+  .top b{font-weight:600;font-size:17px;display:flex;align-items:center;gap:12px}
+  .top b::before{content:'';width:12px;height:12px;border-radius:4px;background:var(--ac);transform:rotate(45deg)}
+  .tn{display:flex;gap:6px;align-items:center}
+  .tn a,.lang{padding:9px 16px;border-radius:999px;font-size:13.5px;font-weight:500;display:inline-flex;gap:6px;align-items:center;transition:.25s}
+  .tn a:hover{background:#fff}
+  .lang{background:var(--ink);color:#fff}
+  .lang:hover{background:var(--ac)}
+
+  .bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(170px,auto);gap:16px;padding-block:14px 30px}
+  .tl{border-radius:28px;padding:28px;background:#fff;border:1px solid var(--ln);display:flex;flex-direction:column;justify-content:space-between;gap:16px;transition:transform .35s}
+  .tl:hover{transform:translateY(-4px)}
+  .t1{grid-column:span 2;grid-row:span 2;background:var(--ink);color:#fff;border:0;padding:40px;position:relative;overflow:hidden}
+  .t1::before{content:'';position:absolute;width:340px;height:340px;border-radius:50%;background:var(--ac);filter:blur(90px);opacity:.55;top:-140px;inset-inline-end:-100px}
+  .t1>*{position:relative}
+  .kick{display:inline-flex;gap:8px;align-items:center;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.12);font-size:13px}
+  .kick::before{content:'';width:8px;height:8px;border-radius:50%;background:#A99BFF}
+  h1{font-size:clamp(36px,4.8vw,66px);font-weight:700;line-height:1.25;margin:18px 0 14px}
+  .t1 p{color:rgba(255,255,255,.72);font-weight:300;line-height:1.9;font-size:16.5px;max-width:480px}
+  .go{align-self:flex-start;display:inline-flex;gap:10px;align-items:center;margin-top:10px;padding:13px 24px;border-radius:999px;background:#fff;color:var(--ink);font-weight:600;font-size:15px;transition:.3s}
+  .go:hover{background:var(--ac);color:#fff}
+  .go .ic{transform:rotate(90deg)}
+  .t2{background:var(--ac);color:#fff;border:0}
+  .tl small{font-size:13.5px;opacity:.75}
+  .tl strong{font:700 clamp(48px,6vw,84px)/1 'Space Grotesk',sans-serif}
+  .t4{grid-column:span 2}
+  .tags{display:flex;flex-wrap:wrap;gap:8px}
+  .tags span{padding:8px 14px;border-radius:999px;background:#F3F2EE;border:1px solid var(--ln);font:500 13px 'Space Grotesk','Readex Pro',sans-serif;direction:ltr}
+
+  .work{padding-block:60px 40px}
+  .sh{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:28px}
+  h2{font-size:clamp(28px,3.6vw,46px);font-weight:700;line-height:1.3}
+  .sh span{color:var(--mu);font-size:14.5px}
+  .pg{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .pc{display:flex;flex-direction:column;background:#fff;border:1px solid var(--ln);border-radius:26px;overflow:hidden;transition:translate .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s,opacity .8s ease,transform .8s ease}
+  .pc:hover{translate:0 -8px;box-shadow:0 30px 60px rgba(17,17,19,.14)}
+  .pv{height:190px;background:linear-gradient(135deg,var(--c1),color-mix(in srgb,var(--c1) 55%,#000));display:grid;place-items:center;position:relative;overflow:hidden;flex-shrink:0}
+  .pv::before{content:'';position:absolute;width:240px;height:240px;border-radius:50%;background:var(--c2);opacity:.45;filter:blur(50px);top:-110px;inset-inline-end:-70px;transition:.6s}
+  .pc:hover .pv::before{transform:scale(1.5)}
+  .pn{position:absolute;top:16px;inset-inline-start:18px;font:500 12px 'Space Grotesk',sans-serif;color:#fff;background:rgba(255,255,255,.18);padding:4px 10px;border-radius:999px}
+  .plogo{width:84px;height:84px;background:#fff;border-radius:22px;padding:12px;position:relative;box-shadow:0 16px 40px rgba(0,0,0,.3);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+  .pc:hover .plogo{transform:scale(1.1) rotate(-6deg)}
+  .pt{padding:22px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .pt small{align-self:flex-start;font-size:12px;font-weight:500;padding:5px 12px;border-radius:999px;background:#F3F2EE;color:var(--mu)}
+  .pt h3{font-size:22px;font-weight:700;line-height:1.35}
+  .pt p{color:var(--mu);font-size:14.5px;line-height:1.8;font-weight:300;flex:1}
+  .parr{margin-top:10px;display:flex;justify-content:space-between;align-items:center;padding:12px 18px;border-radius:14px;background:#F3F2EE;font-weight:600;font-size:14px;transition:.3s}
+  .parr::before{content:'افتح الموقع'}
+  html[data-lang=en] & .parr::before{content:'Open website'}
+  .pc:hover .parr{background:var(--ink);color:#fff}
+  .pc:last-child:nth-child(3n+1){grid-column:1/-1;flex-direction:row}
+  .pc:last-child:nth-child(3n+1) .pv{width:42%;height:auto;min-height:230px}
+  .pc:last-child:nth-child(3n+1) .pt{justify-content:center;padding:32px}
+
+  .how{padding-block:50px 80px}
+  .how h2{margin-bottom:28px}
+  .hw{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .hc{background:#fff;border:1px solid var(--ln);border-radius:26px;padding:30px}
+  .hc i{font:700 14px 'Space Grotesk',sans-serif;color:var(--ac);display:inline-block;margin-bottom:24px;padding:6px 12px;border-radius:999px;background:rgba(91,61,245,.1)}
+  .hc h3{font-size:20px;font-weight:600;margin-bottom:8px}
+  .hc p{color:var(--mu);font-weight:300;line-height:1.85;font-size:15px}
+  footer{border-top:1px solid var(--ln);padding-block:28px;color:var(--mu);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+  @media(max-width:980px){
+    .bento,.pg{grid-template-columns:repeat(2,1fr)}
+    .t1,.t4{grid-column:span 2}
+    .t1{grid-row:auto}
+    .pc:last-child:nth-child(3n+1){grid-column:auto;flex-direction:column}
+    .pc:last-child:nth-child(3n+1) .pv{width:auto;height:190px;min-height:0}
+    .pc:last-child:nth-child(3n+1) .pt{padding:22px}
+  }
+  @media(max-width:640px){
+    .pg,.hw{grid-template-columns:1fr}
+    .tn a{display:none}
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ ICONS + LOGOS ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+<symbol id="globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></symbol>
+<symbol id="pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+<symbol id="doc" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8zM14 2v6h6M9 13h6M9 17h6"/></symbol>
+<symbol id="money" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></symbol>
+<symbol id="print" viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z"/></symbol>
+<symbol id="chart" viewBox="0 0 24 24"><path d="M3 3v18h18M7 14l4-4 4 4 5-7"/></symbol>
+<symbol id="chat" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.4 8.4 0 01-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.4 8.4 0 013.8-.9 8.5 8.5 0 018.5 8.5z"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+<symbol id="phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></symbol>
+<symbol id="cal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+<symbol id="shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></symbol>
+<symbol id="search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></symbol>
+<symbol id="user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+<symbol id="bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 00-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 01-3.4 0"/></symbol>
+
+<symbol id="lg-zaboon" viewBox="0 0 48 48"><rect width="48" height="48" rx="13" fill="#1E40AF"/><path d="M15 15h18L15 33h18" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M41 41h-9l9-10z" fill="#F59E0B"/></symbol>
+<symbol id="lg-sufra" viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#B4492B"/><circle cx="24" cy="28" r="12" fill="none" stroke="#F6EFE4" stroke-width="2.5"/><circle cx="24" cy="28" r="6" fill="#F6EFE4"/><path d="M18 8c-2 2 2 3 0 6M24 6c-2 2 2 3 0 6M30 8c-2 2 2 3 0 6" fill="none" stroke="#F6EFE4" stroke-width="2" stroke-linecap="round"/></symbol>
+<symbol id="lg-shifa" viewBox="0 0 48 48"><rect width="48" height="48" rx="16" fill="#0E9384"/><path d="M24 12v24M12 24h24" stroke="#fff" stroke-width="10" stroke-linecap="round"/><path d="M14 24h6l2-4 4 8 2-4h6" fill="none" stroke="#0E9384" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="lg-dar" viewBox="0 0 48 48"><rect width="48" height="48" fill="#0E0F11"/><path d="M7 24L24 7l17 17-17 17z" fill="none" stroke="#C9A45C" stroke-width="2"/><path d="M17 28v-7l7-6 7 6v7z" fill="none" stroke="#C9A45C" stroke-width="2" stroke-linejoin="round"/><path d="M24 28v-5" stroke="#C9A45C" stroke-width="2" stroke-linecap="round"/></symbol>
+</svg>
+
+<!-- ============================================================
+     PORTFOLIO
+============================================================ -->
+<div class="view on" id="v-home">
+  <div class="w top">
+    <b data-ar="محمد علاء الدين" data-en="Mohammed Alaaeldeen"></b>
+    <div class="tn">
+      <a href="#" data-go="work" data-ar="المشاريع" data-en="Projects"></a>
+      <a href="#" data-go="how" data-ar="طريقة العمل" data-en="Approach"></a>
+      <button class="lang" aria-label="Language"><svg class="ic"><use href="#globe"/></svg><span>EN</span></button>
+    </div>
+  </div>
+
+  <header class="w bento">
+    <div class="tl t1">
+      <div>
+        <span class="kick">Website Builder</span>
+        <h1 data-ar="محمد علاء الدين" data-en="Mohammed Alaaeldeen"></h1>
+        <p data-ar="أصمم وأنفذ مواقع إلكترونية وصفحات هبوط للشركات والأنشطة التجارية. أهتم بأن يكون لكل موقع شخصيته، وأن يعمل بالعربية والإنجليزية على كل الشاشات." data-en="I design and build websites and landing pages for businesses. I care that every site has its own character and works in Arabic and English on every screen."></p>
+      </div>
+      <a href="#" data-go="work" class="go"><span data-ar="شاهد المشاريع" data-en="See the projects"></span><svg class="ic"><use href="#arrow"/></svg></a>
+    </div>
+    <div class="tl t2"><small data-ar="مشاريع منفذة" data-en="Projects built"></small><strong data-pcount>00</strong></div>
+    <div class="tl t3"><small data-ar="العمر" data-en="Age"></small><strong>29</strong></div>
+    <div class="tl t4">
+      <small data-ar="أعمل بـ" data-en="I work with"></small>
+      <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive</span><span>RTL / LTR</span><span>Landing Pages</span></div>
+    </div>
+  </header>
+
+  <section class="w work" id="work">
+    <div class="sh">
+      <h2 data-ar="المشاريع" data-en="Projects"></h2>
+      <span data-ar="اضغط على أي بطاقة لفتح الموقع كاملاً" data-en="Click any card to open the full website"></span>
+    </div>
+    <div class="pg" id="pgrid"></div>
+  </section>
+
+  <section class="w how" id="how">
+    <h2 class="rv" data-ar="طريقة العمل" data-en="Approach"></h2>
+    <div class="hw rv">
+      <div class="hc"><i>01</i><h3 data-ar="تصميم لكل نشاط" data-en="A design per business"></h3><p data-ar="أبدأ بفهم النشاط وجمهوره، ثم أختار الألوان والخطوط والحركة التي تناسبه هو لا غيره." data-en="I start by understanding the business and its audience, then pick the colors, type and motion that fit it specifically."></p></div>
+      <div class="hc"><i>02</i><h3 data-ar="عربي وإنجليزي" data-en="Arabic and English"></h3><p data-ar="تبديل اللغة بضغطة واحدة مع ضبط اتجاه الصفحة والخطوط في الحالتين." data-en="One-click language switch with direction and fonts handled in both cases."></p></div>
+      <div class="hc"><i>03</i><h3 data-ar="تفاعل له فائدة" data-en="Useful interaction"></h3><p data-ar="حاسبات، تبويبات ونماذج حجز تساعد الزائر على اتخاذ القرار، لا حركات للزينة فقط." data-en="Calculators, tabs and booking forms that help visitors decide, not motion for decoration only."></p></div>
+    </div>
+  </section>
+
+  <footer class="w">
+    <span data-ar="© 2026 محمد علاء الدين" data-en="© 2026 Mohammed Alaaeldeen"></span>
+    <span>Website Builder</span>
+  </footer>
+</div>
+
+<!-- ============================================================
+     PROJECT 1 — ZABOON  (SaaS / gradient style)
+============================================================ -->
+<style>
+#v-zaboon{
+  --p:#1E40AF;--p2:#1E3A8A;--o:#F59E0B;--ink:#0B1437;--mu:#5B6789;--ln:#E5E9F2;
+  --gp:linear-gradient(135deg,#1E40AF,#1E3A8A 60%,#172554);--go:linear-gradient(135deg,#F59E0B,#F97316);
+  background:#FAFAF9;color:var(--ink);font-family:'Plus Jakarta Sans','Tajawal',sans-serif;
+  .rv{transform:translateY(30px)}
+  h1,h2,h3{font-family:'Space Grotesk','Cairo',sans-serif}
+  nav{position:sticky;top:0;z-index:20;background:rgba(250,250,249,.85);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--ln)}
+  nav .w{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{display:flex;align-items:center;gap:10px;font:800 21px 'Space Grotesk','Cairo',sans-serif;color:var(--p2)}
+  .logo{width:40px;height:40px}
+  .links{display:flex;gap:4px}
+  .links a{padding:8px 14px;border-radius:10px;font-size:15px;font-weight:500;transition:.2s}
+  .links a:hover{background:rgba(30,64,175,.07);color:var(--p)}
+  .cta{display:flex;gap:10px;align-items:center}
+  .lang{display:inline-flex;gap:6px;align-items:center;padding:8px 13px;border:1px solid var(--ln);border-radius:10px;background:#fff;font-size:13px;font-weight:700}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 22px;border-radius:12px;font-weight:700;font-size:15px;transition:.25s}
+  .btn:hover{transform:translateY(-2px)}
+  .b1{background:var(--gp);color:#fff;box-shadow:0 18px 44px rgba(30,64,175,.28)}
+  .b2{background:var(--go);color:#fff;box-shadow:0 16px 36px rgba(245,158,11,.32)}
+  .b3{background:#fff;border:1.5px solid var(--ln);color:var(--p2)}
+  .hero{padding-block:80px 90px;background:radial-gradient(ellipse 800px 500px at 80% 10%,rgba(245,158,11,.1),transparent 60%),radial-gradient(ellipse 900px 600px at 10% 30%,rgba(30,64,175,.1),transparent 60%),linear-gradient(rgba(30,64,175,.04) 1px,transparent 1px) 0 0/64px 64px,linear-gradient(90deg,rgba(30,64,175,.04) 1px,transparent 1px) 0 0/64px 64px}
+  .hg{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+  .tag{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border-radius:999px;background:#fff;border:1px solid var(--ln);font-size:13px;font-weight:600;color:var(--p2)}
+  .tag::before{content:'';width:8px;height:8px;border-radius:50%;background:#10B981;box-shadow:0 0 0 4px rgba(16,185,129,.22)}
+  h1{font-size:clamp(38px,5.6vw,68px);font-weight:900;line-height:1.2;margin:20px 0}
+  .hl{display:block;background:linear-gradient(120deg,#1E40AF,#F97316);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{font-size:18px;color:var(--mu);line-height:1.8;max-width:540px;margin-bottom:30px;font-weight:500}
+  .acts{display:flex;gap:12px;flex-wrap:wrap}
+  .st{display:flex;gap:34px;margin-top:40px;padding-top:28px;border-top:1px solid var(--ln)}
+  .st b{font:700 30px 'Space Grotesk',sans-serif;color:var(--p2);display:block}
+  .st span{font-size:13px;color:var(--mu)}
+  .stage{position:relative;display:grid;place-items:center}
+  .ph{width:270px;height:540px;background:#0B1437;border-radius:42px;padding:12px;box-shadow:0 24px 60px rgba(11,20,55,.25)}
+  .sc{height:100%;border-radius:32px;background:#F5F7FB;overflow:hidden;display:flex;flex-direction:column;gap:12px;text-align:start}
+  .sc header{background:var(--gp);color:#fff;padding:34px 18px 20px}
+  .sc header small{opacity:.75;font-size:11px;display:block}
+  .sc header b{font:700 24px 'Space Grotesk',sans-serif}
+  .bars{display:flex;align-items:end;gap:7px;height:96px;margin:0 16px;padding:12px;background:#fff;border-radius:14px}
+  .bars i{flex:1;background:var(--gp);border-radius:4px;animation:grow 1.2s ease backwards}
+  .bars i:nth-child(even){background:var(--go)}
+  .li{margin:0 16px;background:#fff;border-radius:12px;padding:11px 12px;display:flex;justify-content:space-between;font-size:12px;font-weight:700}
+  .li span{color:var(--mu);font-weight:500}
+  .fl{position:absolute;background:#fff;border-radius:16px;padding:12px 16px;box-shadow:0 8px 24px rgba(11,20,55,.1);display:flex;gap:12px;align-items:center;animation:floaty 6s ease-in-out infinite;text-align:start}
+  .fl i{width:36px;height:36px;border-radius:10px;background:var(--go);color:#fff;display:grid;place-items:center;font-size:18px}
+  .fl small{display:block;font-size:11px;color:var(--mu)}
+  .fl b{font-size:15px}
+  .fl.a{top:14%;inset-inline-start:0}
+  .fl.b{bottom:16%;inset-inline-end:0;animation-delay:-3s}
+  .fl.b i{background:var(--gp)}
+  .sec{padding-block:90px}
+  .hd{text-align:center;max-width:720px;margin:0 auto 50px}
+  .eye{display:inline-block;padding:6px 14px;border-radius:999px;background:rgba(245,158,11,.14);color:#F97316;font-size:12.5px;font-weight:700}
+  h2{font-size:clamp(30px,4.2vw,46px);font-weight:800;line-height:1.3;margin:14px 0}
+  .hd p{color:var(--mu);font-size:17px;line-height:1.75}
+  .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .ft{background:#fff;border:1px solid var(--ln);border-radius:18px;padding:28px;transition:.3s}
+  .ft:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(11,20,55,.14);border-color:transparent}
+  .ft i{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,rgba(30,64,175,.09),rgba(245,158,11,.1));color:var(--p2);display:grid;place-items:center;font-size:25px;margin-bottom:18px;transition:.3s}
+  .ft:hover i{background:var(--gp);color:#fff;transform:rotate(-6deg)}
+  .ft h3{font-size:18px;margin-bottom:8px}
+  .ft p{font-size:14.5px;color:var(--mu);line-height:1.75}
+  .pr{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:920px;margin:auto}
+  .pk{background:#fff;border:1.5px solid var(--ln);border-radius:28px;padding:36px}
+  .pk.t{background:var(--gp);color:#fff;border:0;box-shadow:0 20px 60px rgba(30,64,175,.28)}
+  .pk h3{font-size:22px}
+  .pk .d{opacity:.7;font-size:14px}
+  .am{font:700 54px/1 'Space Grotesk',sans-serif;margin:22px 0 6px}
+  .am small{font-size:15px;opacity:.7;font-weight:500}
+  .pk ul{display:grid;gap:10px;margin:22px 0;font-size:14.5px}
+  .pk li::before{content:'✓';margin-inline-end:10px;color:#10B981;font-weight:800}
+  .pk.t li::before{color:#FCD34D}
+  .cal{background:rgba(255,255,255,.1);border-radius:16px;padding:18px;margin:20px 0;font-size:14px}
+  .cal div{display:flex;justify-content:space-between;align-items:center}
+  .cal input{width:100%;margin:14px 0;accent-color:#F59E0B}
+  .cal strong{font:700 24px 'Space Grotesk',sans-serif;color:#FCD34D}
+  .pk .btn{width:100%}
+  .acc{max-width:800px;margin:0 auto 12px;background:#fff;border:1px solid var(--ln);border-radius:18px;overflow:hidden}
+  .acc.open{border-color:var(--p)}
+  .acc button{width:100%;padding:20px 24px;text-align:start;font-weight:700;font-size:16px;display:flex;justify-content:space-between;gap:16px}
+  .acc button::after{content:'+';font-size:22px;color:var(--p);transition:.3s;line-height:1}
+  .acc.open button::after{transform:rotate(45deg)}
+  .acc p{max-height:0;overflow:hidden;padding:0 24px;color:var(--mu);line-height:1.8;font-size:15px;transition:.35s}
+  .acc.open p{max-height:200px;padding-bottom:20px}
+  .band{background:#172554;color:#fff;text-align:center;padding-block:80px;background-image:radial-gradient(ellipse 800px 400px at 50% 0,rgba(30,64,175,.6),transparent 60%)}
+  .band p{opacity:.75;margin:10px auto 26px;max-width:520px;line-height:1.8}
+  footer{background:#070C24;color:rgba(255,255,255,.55);padding-block:28px;font-size:13px}
+  footer .w{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  @media(max-width:900px){
+    .links,.cta .btn{display:none}
+    .hg,.pr{grid-template-columns:1fr}
+    .g3{grid-template-columns:1fr}
+    .hg{text-align:center}
+    .sub{margin-inline:auto}
+    .acts,.st{justify-content:center}
+  }
+}
+</style>
+<div class="view" id="v-zaboon" data-n="زبون|Zaboon" data-k="تطبيق مبيعات ميدانية|Field sales app" data-d="موقع تعريفي لتطبيق مناديب المبيعات المتصل بـ Odoo، مع حاسبة تفاعلية لتكلفة الاشتراك.|Marketing site for a field sales app connected to Odoo, with an interactive subscription calculator." data-c="#1E40AF,#F59E0B">
+  <nav><div class="w">
+    <a href="#" data-go="v-zaboon" class="brand"><svg class="logo"><use href="#lg-zaboon"/></svg><span data-ar="زبون" data-en="Zaboon"></span></a>
+    <div class="links"><a href="#" data-go="zb-f" data-ar="المميزات" data-en="Features"></a><a href="#" data-go="zb-p" data-ar="الأسعار" data-en="Pricing"></a><a href="#" data-go="zb-q" data-ar="الأسئلة" data-en="FAQ"></a></div>
+    <div class="cta"><button class="lang"><svg class="ic"><use href="#globe"/></svg><span>EN</span></button><a href="#" data-go="zb-c" class="btn b1" data-ar="اطلب عرض" data-en="Get demo"></a></div>
+  </div></nav>
+
+  <header class="hero"><div class="w hg">
+    <div>
+      <span class="tag" data-ar="متصل مباشرة مع Odoo Community و Enterprise" data-en="Connected to Odoo Community and Enterprise"></span>
+      <h1><span data-ar="إدارة مناديب المبيعات" data-en="Field sales"></span><span class="hl" data-ar="بسلاسة احترافية" data-en="reimagined"></span></h1>
+      <p class="sub" data-ar="تطبيق زبون يربط مندوبك في الميدان بنظام Odoo لديك مباشرةً. تتبع GPS، طلبات وفواتير، تحصيل، وتقارير، في تطبيق واحد بسيط وقوي." data-en="Zaboon connects your field reps directly to your Odoo system. GPS tracking, orders and invoices, collections and reports in one simple, powerful app."></p>
+      <div class="acts">
+        <a href="#" data-go="zb-p" class="btn b2"><span data-ar="ابدأ الآن" data-en="Start now"></span><svg class="ic flip"><use href="#arrow"/></svg></a>
+        <a href="#" data-go="zb-f" class="btn b3" data-ar="استكشف المميزات" data-en="Explore features"></a>
+      </div>
+      <div class="st">
+        <div><b data-count="120" data-suf="+">0</b><span data-ar="عميل نشط" data-en="Active clients"></span></div>
+        <div><b data-count="3500" data-suf="+">0</b><span data-ar="مندوب ميداني" data-en="Field reps"></span></div>
+        <div><b data-count="99" data-suf="%">0</b><span data-ar="معدل الاستقرار" data-en="Uptime"></span></div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="ph"><div class="sc">
+        <header><small data-ar="مبيعات اليوم" data-en="Today's sales"></small><b>24,500 SAR</b></header>
+        <div class="bars"><i style="height:45%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:90%"></i><i style="height:65%"></i><i style="height:100%"></i><i style="height:80%"></i></div>
+        <div class="li"><b data-ar="طلب جديد #1042" data-en="New order #1042"></b><span>3,200</span></div>
+        <div class="li"><b data-ar="تحصيل فاتورة" data-en="Invoice collected"></b><span>1,850</span></div>
+        <div class="li"><b data-ar="زيارة عميل" data-en="Customer visit"></b><span>GPS ✓</span></div>
+      </div></div>
+      <div class="fl a"><i><svg class="ic"><use href="#pin"/></svg></i><div><small data-ar="GPS نشط" data-en="GPS active"></small><b data-ar="14 زيارة" data-en="14 visits"></b></div></div>
+      <div class="fl b"><i><svg class="ic"><use href="#chart"/></svg></i><div><small data-ar="الهدف الشهري" data-en="Monthly target"></small><b>82%</b></div></div>
+    </div>
+  </div></header>
+
+  <section class="sec" id="zb-f"><div class="w">
+    <div class="hd rv"><span class="eye" data-ar="المميزات" data-en="Features"></span><h2 data-ar="كل شيء يحتاجه مندوبك في تطبيق واحد" data-en="Everything your rep needs in one app"></h2><p data-ar="كل العمليات الميدانية رقمية، آمنة، ومُزامَنة مع Odoo لحظياً." data-en="Every field operation is digital, secure and synced with Odoo in real time."></p></div>
+    <div class="g3 rv">
+      <div class="ft"><i><svg class="ic"><use href="#pin"/></svg></i><h3 data-ar="تتبع المندوب بـ GPS" data-en="GPS rep tracking"></h3><p data-ar="موقع كل مندوب لحظياً مع تسجيل تلقائي للزيارات والمسارات." data-en="Live rep location with automatic visit and route logging."></p></div>
+      <div class="ft"><i><svg class="ic"><use href="#doc"/></svg></i><h3 data-ar="طلبات وعروض أسعار" data-en="Orders and quotations"></h3><p data-ar="عروض وطلبات بخصومات وضرائب ووحدات قياس متعددة." data-en="Quotes and orders with discounts, taxes and multiple units."></p></div>
+      <div class="ft"><i><svg class="ic"><use href="#money"/></svg></i><h3 data-ar="استحصال الفواتير" data-en="Invoice collection"></h3><p data-ar="تحصيل في الميدان مع إيصالات رقمية وترحيل تلقائي للحسابات." data-en="Collect in the field with digital receipts auto-posted to accounts."></p></div>
+      <div class="ft"><i><svg class="ic"><use href="#print"/></svg></i><h3 data-ar="طباعة الفواتير" data-en="Invoice printing"></h3><p data-ar="طباعة فورية على طابعات Bluetooth الميدانية وحفظ PDF." data-en="Instant printing on Bluetooth field printers and PDF archiving."></p></div>
+      <div class="ft"><i><svg class="ic"><use href="#chart"/></svg></i><h3 data-ar="تقارير وتحليلات" data-en="Reports and analytics"></h3><p data-ar="لوحات للمدير وتحليل المبيعات بحسب المنطقة والمنتج والعميل." data-en="Manager dashboards and sales analysis by region, product and customer."></p></div>
+      <div class="ft"><i><svg class="ic"><use href="#chat"/></svg></i><h3 data-ar="ربط مع واتساب" data-en="WhatsApp integration"></h3><p data-ar="إرسال الفواتير وكشوف الحساب وتذكير العميل من داخل التطبيق." data-en="Send invoices, statements and reminders from inside the app."></p></div>
+    </div>
+  </div></section>
+
+  <section class="sec" id="zb-p" style="background:#fff"><div class="w">
+    <div class="hd rv"><span class="eye" data-ar="الأسعار" data-en="Pricing"></span><h2 data-ar="أسعار شفافة، بدون مفاجآت" data-en="Transparent pricing, no surprises"></h2><p data-ar="حرّك المؤشر لتعرف تكلفة فريقك الشهرية." data-en="Move the slider to see your team's monthly cost."></p></div>
+    <div class="pr rv">
+      <div class="pk t">
+        <h3 data-ar="باقة المستخدم" data-en="User plan"></h3><p class="d" data-ar="اشتراك شهري لكل مندوب" data-en="Monthly subscription per rep"></p>
+        <div class="am">13 <small>USD</small></div>
+        <div class="cal">
+          <div><span data-ar="عدد المستخدمين" data-en="Number of users"></span><b id="zb-n">10</b></div>
+          <input type="range" id="zb-r" min="1" max="60" value="10">
+          <div><span data-ar="الإجمالي شهرياً" data-en="Monthly total"></span><strong><span id="zb-t">130</span> USD</strong></div>
+        </div>
+        <ul><li data-ar="وصول كامل لجميع الميزات" data-en="Full access to all features"></li><li data-ar="ربط مباشر مع Odoo" data-en="Direct Odoo integration"></li><li data-ar="دعم فني وتدريب أولي" data-en="Support and initial training"></li></ul>
+        <a href="#" data-go="zb-c" class="btn b2" data-ar="ابدأ اشتراكك" data-en="Start subscription"></a>
+      </div>
+      <div class="pk">
+        <h3 data-ar="إضافة ميزة جديدة" data-en="Custom feature"></h3><p class="d" data-ar="ميزة مخصصة لاحتياج شركتك" data-en="A feature tailored to your company"></p>
+        <div class="am">300 <small>USD</small></div>
+        <ul><li data-ar="تحليل احتياج وتقدير قبل البدء" data-en="Analysis and estimate first"></li><li data-ar="تطوير ودمج الميزة في التطبيق" data-en="Build and integrate the feature"></li><li data-ar="اختبار وضمان جودة" data-en="Testing and QA"></li><li data-ar="توثيق كامل للميزة" data-en="Full feature documentation"></li></ul>
+        <a href="#" data-go="zb-c" class="btn b3" data-ar="ناقش ميزتك" data-en="Discuss your feature"></a>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="sec" id="zb-q"><div class="w">
+    <div class="hd rv"><span class="eye" data-ar="الأسئلة الشائعة" data-en="FAQ"></span><h2 data-ar="إجابات سريعة" data-en="Quick answers"></h2></div>
+    <div class="acc"><button data-ar="هل التطبيق يعمل مع نسخة Odoo الخاصة بي؟" data-en="Does it work with my Odoo version?"></button><p data-ar="نعم. يدعم زبون إصدارات Odoo من 14 فصاعداً، سواء Community أو Enterprise." data-en="Yes. Zaboon supports Odoo 14 onwards, Community or Enterprise."></p></div>
+    <div class="acc"><button data-ar="ماذا يحدث إذا انقطع الإنترنت في الميدان؟" data-en="What if the internet drops in the field?"></button><p data-ar="المندوب يستمر في العمل، وتُحفظ البيانات محلياً ثم تُرسل إلى Odoo عند رجوع الاتصال." data-en="The rep keeps working. Data is saved locally and sent to Odoo once back online."></p></div>
+    <div class="acc"><button data-ar="هل يمكنني تجربة التطبيق قبل الاشتراك؟" data-en="Can I try the app before subscribing?"></button><p data-ar="نعم، نقدّم 14 يوم تجربة كاملة بدون بطاقة ائتمان." data-en="Yes, we offer a full 14-day trial with no credit card."></p></div>
+  </div></section>
+
+  <section class="band" id="zb-c"><div class="w">
+    <h2 data-ar="جاهز لتُغيِّر طريقة عمل مناديبك؟" data-en="Ready to transform how your reps work?"></h2>
+    <p data-ar="راسلنا وسيتواصل معك أحد خبراء Odoo خلال 24 ساعة." data-en="Message us and an Odoo expert will reach out within 24 hours."></p>
+    <a href="mailto:hello@zaboon.app" class="btn b2">hello@zaboon.app</a>
+  </div></section>
+  <footer><div class="w"><span data-ar="© 2026 زبون. كل الحقوق محفوظة." data-en="© 2026 Zaboon. All rights reserved."></span><span>Odoo 14+ · Community · Enterprise</span></div></footer>
+  <script>(()=>{const r=document.getElementById('zb-r'),u=()=>{document.getElementById('zb-n').textContent=r.value;document.getElementById('zb-t').textContent=(r.value*13).toLocaleString('en-US')};r.oninput=u;u()})()</script>
+</div>
+
+<!-- ============================================================
+     PROJECT 2 — SUFRA  (warm editorial / serif)
+============================================================ -->
+<style>
+#v-sufra{
+  --bg:#F6EFE4;--ink:#2B1A10;--tc:#B4492B;--ln:#DDCFBB;--mu:#7A6453;
+  background:var(--bg);color:var(--ink);font-family:'Tajawal',sans-serif;
+  .rv{transform:scale(.94)}
+  h1,h2,h3,.brand{font-family:'Playfair Display','Amiri',serif}
+  nav .w{display:flex;justify-content:space-between;align-items:center;padding-block:22px;border-bottom:1px solid var(--ln)}
+  .brand{display:flex;gap:12px;align-items:center;font-size:26px;font-weight:700}
+  .logo{width:44px;height:44px}
+  .links{display:flex;gap:30px;font-size:15px}
+  .links a{position:relative}
+  .links a::after{content:'';position:absolute;inset-inline:0;bottom:-4px;height:1px;background:var(--tc);transform:scaleX(0);transition:.3s}
+  .links a:hover::after{transform:scaleX(1)}
+  .cta{display:flex;gap:10px;align-items:center}
+  .lang{font-size:13px;font-weight:700;display:inline-flex;gap:6px;align-items:center;padding:9px 14px;border:1px solid var(--ink);border-radius:999px}
+  .btn{display:inline-flex;gap:8px;align-items:center;justify-content:center;padding:13px 26px;border-radius:999px;border:1px solid var(--ink);font-weight:700;font-size:15px;transition:.3s}
+  .btn:hover,.btn.f{background:var(--ink);color:var(--bg)}
+  .btn.f:hover{background:var(--tc);border-color:var(--tc)}
+  .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:center;padding-block:70px 100px}
+  .eyb{font-size:14px;color:var(--tc);font-weight:700;margin-bottom:18px}
+  h1{font-size:clamp(44px,6.4vw,92px);line-height:1.15;font-weight:700}
+  h1 em{font-style:italic;color:var(--tc);display:block}
+  .hero p{font-size:19px;line-height:1.9;max-width:520px;margin:26px 0 34px;color:#5A4334}
+  .acts{display:flex;gap:12px;flex-wrap:wrap}
+  .arch{position:relative;aspect-ratio:3/4;border-radius:999px 999px 24px 24px;background:radial-gradient(circle at 50% 30%,#D9703F,var(--tc) 55%,#7A2A14);color:#FBEFE0;display:flex;flex-direction:column;justify-content:flex-end;padding:44px 36px;text-align:center;box-shadow:inset 0 0 0 10px var(--bg),inset 0 0 0 11px var(--tc)}
+  .arch small{font-size:13px;opacity:.8}
+  .arch h3{font-size:30px;margin:6px 0 8px;line-height:1.35}
+  .arch p{font-size:14.5px;opacity:.85;margin:0 auto 14px;color:inherit;line-height:1.7}
+  .arch b{font:700 26px 'Playfair Display',serif}
+  .ring{position:absolute;top:-30px;inset-inline-start:-30px;width:132px;height:132px;background:var(--bg);border-radius:50%;animation:spin 18s linear infinite;direction:ltr}
+  .ring text{font:700 10px 'Plus Jakarta Sans',sans-serif;fill:var(--ink)}
+  .menu{padding-block:90px;border-top:1px solid var(--ln);text-align:center}
+  h2{font-size:clamp(34px,4.6vw,60px);line-height:1.25}
+  .menu>.w>p{color:var(--mu);margin-top:10px;font-size:17px}
+  .tabs{display:flex;justify-content:center;gap:8px;margin:28px 0 30px;flex-wrap:wrap}
+  .tabs button{padding:11px 28px;border-radius:999px;border:1px solid var(--ln);font-weight:700;transition:.3s}
+  .tabs .on{background:var(--tc);border-color:var(--tc);color:#fff}
+  .pane{display:none;max-width:820px;margin:auto;text-align:start}
+  .pane.on{display:block;animation:fadeup .5s ease}
+  .dish{display:grid;grid-template-columns:1fr auto;gap:6px 18px;padding:22px 0;border-bottom:1px dashed var(--ln);transition:.3s}
+  .dish:hover{padding-inline:14px;background:rgba(180,73,43,.06)}
+  .dish h3{font-size:23px}
+  .dish b{font:700 22px 'Playfair Display',serif;color:var(--tc)}
+  .dish p{grid-column:1/-1;color:var(--mu);font-size:15px}
+  .nums{background:var(--ink);color:var(--bg);padding-block:60px}
+  .nums .w{display:grid;grid-template-columns:repeat(3,1fr);text-align:center;gap:20px}
+  .nums b{font:700 clamp(40px,6vw,76px)/1.1 'Playfair Display',serif;color:#E9A56B;display:block}
+  .nums span{font-size:15px;opacity:.75}
+  .book{padding-block:90px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .book>div>p{color:#5A4334;font-size:17px;line-height:1.9;margin:18px 0}
+  .book li{display:flex;gap:10px;align-items:center;font-weight:500;margin-bottom:10px}
+  .book li .ic{color:var(--tc);font-size:18px}
+  form{background:#fff;border:1px solid var(--ln);border-radius:24px;padding:32px;display:grid;gap:14px}
+  label{font-size:13px;font-weight:700;display:grid;gap:7px}
+  input,textarea{padding:13px 15px;border:1px solid var(--ln);border-radius:12px;background:var(--bg);color:var(--ink);width:100%}
+  input:focus,textarea:focus{outline:2px solid var(--tc)}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .ok{color:#5E6B34;font-weight:700;font-size:14px}
+  footer{border-top:1px solid var(--ln);padding-block:28px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:14px;color:var(--mu)}
+  @media(max-width:860px){
+    .links{display:none}
+    .hero,.book{grid-template-columns:1fr}
+    .arch{max-width:340px;margin:auto;width:100%}
+  }
+}
+</style>
+<div class="view" id="v-sufra" data-n="سُفرة|Sufra" data-k="مطعم وكافيه|Restaurant and café" data-d="موقع بطابع تحريري دافئ لمطعم وكافيه، مع قائمة طعام بتبويبات تفاعلية ونموذج حجز طاولة.|A warm, editorial site for a restaurant and café, with an interactive tabbed menu and a table booking form." data-c="#B4492B,#E9A56B">
+  <nav><div class="w">
+    <a href="#" data-go="v-sufra" class="brand"><svg class="logo"><use href="#lg-sufra"/></svg><span data-ar="سُفرة" data-en="Sufra"></span></a>
+    <div class="links"><a href="#" data-go="sf-m" data-ar="القائمة" data-en="Menu"></a><a href="#" data-go="sf-n" data-ar="قصتنا" data-en="Our story"></a><a href="#" data-go="sf-b" data-ar="الحجز" data-en="Booking"></a></div>
+    <div class="cta"><button class="lang"><svg class="ic"><use href="#globe"/></svg><span>EN</span></button></div>
+  </div></nav>
+
+  <header class="w hero">
+    <div>
+      <div class="eyb" data-ar="مطعم وكافيه — الرياض" data-en="Restaurant and café — Riyadh"></div>
+      <h1><span data-ar="مذاق البيت،" data-en="Homemade taste,"></span><em data-ar="بلمسة عصرية" data-en="a modern touch"></em></h1>
+      <p data-ar="أطباق عربية تُطهى على مهل، وقهوة مختصة تُحضَّر أمامك. تعال كما أنت، واترك الباقي علينا." data-en="Arabic dishes cooked slowly and specialty coffee brewed in front of you. Come as you are and leave the rest to us."></p>
+      <div class="acts">
+        <a href="#" data-go="sf-b" class="btn f"><span data-ar="احجز طاولة" data-en="Book a table"></span><svg class="ic flip"><use href="#arrow"/></svg></a>
+        <a href="#" data-go="sf-m" class="btn" data-ar="تصفح القائمة" data-en="See the menu"></a>
+      </div>
+    </div>
+    <div class="arch">
+      <svg class="ring" viewBox="0 0 120 120"><defs><path id="sf-c" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"/></defs><text><textPath href="#sf-c" textLength="285">SUFRA · RESTAURANT · CAFE · EST. 2014 ·</textPath></text><use href="#lg-sufra" x="36" y="36" width="48" height="48"/></svg>
+      <small data-ar="طبق اليوم" data-en="Dish of the day"></small>
+      <h3 data-ar="مندي لحم على الحطب" data-en="Wood-fired lamb mandi"></h3>
+      <p data-ar="مع الأرز المبهّر والسلطة والصلصة الحارة" data-en="With spiced rice, salad and hot sauce"></p>
+      <b>85 SAR</b>
+    </div>
+  </header>
+
+  <section class="menu" id="sf-m"><div class="w">
+    <h2 class="rv" data-ar="القائمة" data-en="The menu"></h2>
+    <p data-ar="اختر الوقت وشاهد ما نقدّمه." data-en="Pick a time of day and see what we serve."></p>
+    <div class="tabs">
+      <button class="on" data-tab="sfm:a" data-ar="الإفطار" data-en="Breakfast"></button>
+      <button data-tab="sfm:b" data-ar="الغداء" data-en="Lunch"></button>
+      <button data-tab="sfm:c" data-ar="القهوة والحلى" data-en="Coffee and sweets"></button>
+    </div>
+    <div class="pane on" data-pane="sfm:a">
+      <div class="dish"><h3 data-ar="فول بالسمن البلدي" data-en="Fava beans with ghee"></h3><b>18</b><p data-ar="فول مدمّس، طحينة، طماطم وخبز تنور ساخن" data-en="Slow-cooked fava, tahini, tomato and hot tannour bread"></p></div>
+      <div class="dish"><h3 data-ar="شكشوكة سُفرة" data-en="Sufra shakshuka"></h3><b>24</b><p data-ar="بيض بلدي في صلصة طماطم وفلفل مشوي" data-en="Farm eggs in tomato and roasted pepper sauce"></p></div>
+      <div class="dish"><h3 data-ar="صحن الإفطار العربي" data-en="Arabic breakfast platter"></h3><b>42</b><p data-ar="لبنة، زعتر، جبن، زيتون، فلافل وعسل" data-en="Labneh, zaatar, cheese, olives, falafel and honey"></p></div>
+    </div>
+    <div class="pane" data-pane="sfm:b">
+      <div class="dish"><h3 data-ar="مندي لحم على الحطب" data-en="Wood-fired lamb mandi"></h3><b>85</b><p data-ar="لحم يُطهى ست ساعات مع أرز مبهّر" data-en="Lamb cooked for six hours with spiced rice"></p></div>
+      <div class="dish"><h3 data-ar="مشويات مشكلة" data-en="Mixed grill"></h3><b>78</b><p data-ar="كباب، شيش طاووق وريش مع خضار مشوية" data-en="Kebab, shish tawook and chops with grilled vegetables"></p></div>
+      <div class="dish"><h3 data-ar="مقلوبة باذنجان" data-en="Aubergine maqluba"></h3><b>46</b><p data-ar="طبق نباتي مع لبن بالخيار" data-en="A vegetarian dish with cucumber yoghurt"></p></div>
+    </div>
+    <div class="pane" data-pane="sfm:c">
+      <div class="dish"><h3>V60</h3><b>18</b><p data-ar="حبوب إثيوبية محمصة محلياً" data-en="Locally roasted Ethiopian beans"></p></div>
+      <div class="dish"><h3 data-ar="قهوة عربية بالهيل" data-en="Arabic coffee with cardamom"></h3><b>14</b><p data-ar="تُقدَّم مع تمر سكري" data-en="Served with Sukkari dates"></p></div>
+      <div class="dish"><h3 data-ar="كنافة بالقشطة" data-en="Kunafa with cream"></h3><b>26</b><p data-ar="تُخبز عند الطلب وتُقدَّم ساخنة" data-en="Baked to order and served hot"></p></div>
+    </div>
+  </div></section>
+
+  <section class="nums" id="sf-n"><div class="w">
+    <div><b data-count="2014">0</b><span data-ar="سنة الافتتاح" data-en="Year we opened"></span></div>
+    <div><b data-count="45" data-suf="+">0</b><span data-ar="طبق في القائمة" data-en="Dishes on the menu"></span></div>
+    <div><b data-count="3">0</b><span data-ar="فروع في الرياض" data-en="Branches in Riyadh"></span></div>
+  </div></section>
+
+  <section class="w book" id="sf-b">
+    <div class="rv">
+      <h2 data-ar="احجز طاولتك" data-en="Book your table"></h2>
+      <p data-ar="املأ النموذج وسنؤكد حجزك برسالة خلال دقائق." data-en="Fill in the form and we will confirm by message within minutes."></p>
+      <ul>
+        <li><svg class="ic"><use href="#clock"/></svg><span data-ar="يومياً من 8 صباحاً حتى 12 منتصف الليل" data-en="Daily from 8 AM to midnight"></span></li>
+        <li><svg class="ic"><use href="#pin"/></svg><span data-ar="طريق الملك فهد، الرياض" data-en="King Fahd Road, Riyadh"></span></li>
+        <li><svg class="ic"><use href="#phone"/></svg><span class="ltr">+966 50 000 0000</span></li>
+      </ul>
+    </div>
+    <form class="rv">
+      <div class="two"><label><span data-ar="الاسم" data-en="Name"></span><input type="text" required></label><label><span data-ar="رقم الجوال" data-en="Mobile"></span><input type="tel" required></label></div>
+      <div class="two"><label><span data-ar="التاريخ" data-en="Date"></span><input type="date" required></label><label><span data-ar="عدد الأشخاص" data-en="Guests"></span><input type="number" min="1" max="30" value="2"></label></div>
+      <label><span data-ar="ملاحظات" data-en="Notes"></span><textarea rows="3"></textarea></label>
+      <button class="btn f" data-ar="أكّد الحجز" data-en="Confirm booking"></button>
+      <p class="ok" data-ar="تم استلام طلب الحجز، سنتواصل معك للتأكيد." data-en="Booking request received. We will contact you to confirm."></p>
+    </form>
+  </section>
+  <footer class="w"><span data-ar="© 2026 سُفرة. جميع الحقوق محفوظة." data-en="© 2026 Sufra. All rights reserved."></span><span data-ar="صُنع بحب في الرياض" data-en="Made with love in Riyadh"></span></footer>
+</div>
+
+<!-- ============================================================
+     PROJECT 3 — SHIFA  (soft pastel / rounded / bento)
+============================================================ -->
+<style>
+#v-shifa{
+  --t:#0E9384;--d:#0B4F4A;--c:#FF7A59;--bg:#EEF6F4;--mu:#5E7B77;
+  background:radial-gradient(600px circle at 90% 0,#C9F0E6,transparent 70%),radial-gradient(520px circle at 0 420px,#FFE3D9,transparent 70%),var(--bg);
+  color:#0A2E2B;font-family:'IBM Plex Sans Arabic',sans-serif;
+  .rv{transform:translateY(26px)}
+  nav{position:sticky;top:14px;z-index:20;margin:14px auto 0;width:min(1100px,calc(100% - 28px));background:rgba(255,255,255,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid #fff;border-radius:999px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 10px 40px rgba(11,79,74,.08)}
+  .brand{display:flex;gap:10px;align-items:center;font-weight:700;font-size:18px;color:var(--d)}
+  .logo{width:38px;height:38px}
+  .links{display:flex;gap:26px;font-size:14.5px;font-weight:500;color:var(--mu)}
+  .links a:hover{color:var(--t)}
+  .cta{display:flex;gap:8px;align-items:center}
+  .lang{display:inline-flex;gap:6px;align-items:center;font-size:13px;font-weight:600;padding:9px 14px;border-radius:999px;background:#fff}
+  .btn{display:inline-flex;gap:8px;align-items:center;justify-content:center;padding:12px 24px;border-radius:999px;background:var(--t);color:#fff;font-weight:600;font-size:15px;transition:.3s}
+  .btn:hover{background:var(--d);box-shadow:0 12px 30px rgba(14,147,132,.3)}
+  .btn.s{background:#fff;color:var(--d)}
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;padding-block:70px 80px}
+  .pill{display:inline-flex;gap:8px;align-items:center;background:#fff;border-radius:999px;padding:6px 16px 6px 6px;font-size:13px;font-weight:500;color:var(--d)}
+  [dir=rtl] & .pill{padding:6px 6px 6px 16px}
+  .pill i{background:var(--c);color:#fff;border-radius:999px;padding:3px 10px;font-style:normal;font-size:12px}
+  h1{font-size:clamp(38px,5.4vw,70px);font-weight:700;line-height:1.25;margin:20px 0;color:var(--d);position:relative;z-index:0}
+  h1 em{font-style:normal;color:var(--t);position:relative;white-space:nowrap}
+  h1 em::after{content:'';position:absolute;inset-inline:0;bottom:.1em;height:.24em;background:var(--c);opacity:.3;border-radius:99px;z-index:-1}
+  .hero p{font-size:18px;line-height:1.9;color:var(--mu);max-width:520px;margin-bottom:28px}
+  .acts{display:flex;gap:10px;flex-wrap:wrap}
+  .chips{display:flex;gap:30px;margin-top:34px}
+  .chips b{font-size:26px;color:var(--d);display:block}
+  .chips span{font-size:13px;color:var(--mu)}
+  .wd{background:#fff;border-radius:32px;padding:26px;box-shadow:0 30px 80px rgba(11,79,74,.14);display:grid;gap:16px}
+  .wd h3{font-size:19px;color:var(--d)}
+  .wd>small{color:var(--mu);font-size:13px;font-weight:500}
+  .seg{display:grid;grid-template-columns:repeat(3,1fr);background:var(--bg);border-radius:16px;padding:5px;gap:4px}
+  .seg button{padding:10px 4px;border-radius:12px;font-size:13.5px;font-weight:600;color:var(--mu);transition:.25s}
+  .seg .on{background:#fff;color:var(--t);box-shadow:0 4px 14px rgba(11,79,74,.1)}
+  .doc{display:none;gap:14px;align-items:center;background:var(--bg);border-radius:20px;padding:16px}
+  .doc.on{display:flex;animation:fadeup .4s ease}
+  .doc i{width:52px;height:52px;border-radius:16px;background:var(--t);color:#fff;display:grid;place-items:center;font-size:24px;flex-shrink:0}
+  .doc b{display:block;color:var(--d)}
+  .doc small{color:var(--mu);font-size:13px}
+  .doc em{margin-inline-start:auto;font-style:normal;font-weight:700;color:var(--c);white-space:nowrap}
+  .pick{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .pick button{padding:10px 0;border-radius:12px;border:1.5px solid #DCEBE8;font-size:13.5px;font-weight:600;direction:ltr;transition:.2s}
+  .pick button:hover{border-color:var(--t)}
+  .pick .on{background:var(--d);border-color:var(--d);color:#fff}
+  .wd .btn{width:100%}
+  .ok{color:var(--t);font-weight:600;font-size:14px;text-align:center}
+  .sv{padding-block:60px}
+  h2{font-size:clamp(30px,4vw,48px);color:var(--d);line-height:1.3;margin-bottom:34px;max-width:640px}
+  .bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+  .bx{border-radius:28px;padding:28px;min-height:200px;display:flex;flex-direction:column;justify-content:space-between;gap:20px;transition:transform .35s;background:#fff}
+  .bx:hover{transform:translateY(-6px) rotate(-.6deg)}
+  .bx .ic{font-size:30px}
+  .bx h3{font-size:20px;margin-bottom:6px}
+  .bx p{font-size:14.5px;line-height:1.75;opacity:.8}
+  .bx:nth-child(1){grid-column:span 3;background:var(--d);color:#fff}
+  .bx:nth-child(2){grid-column:span 3;background:#FFE3D9;color:#7A2E18}
+  .bx:nth-child(3){grid-column:span 2}
+  .bx:nth-child(4){grid-column:span 2;background:#DDEBFF;color:#173A6B}
+  .bx:nth-child(5){grid-column:span 2;background:#E7E0FF;color:#3B2A7A}
+  .steps{padding-block:50px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:s}
+  .sp{background:#fff;border-radius:28px;padding:28px}
+  .sp::before{counter-increment:s;content:'0' counter(s);font-weight:700;font-size:44px;color:#BFE6DE;line-height:1;display:block;margin-bottom:14px}
+  .sp h3{font-size:19px;color:var(--d);margin-bottom:6px}
+  .sp p{color:var(--mu);font-size:14.5px;line-height:1.75}
+  .fq{padding-block:50px 90px;display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:start}
+  .acc{background:#fff;border-radius:22px;margin-bottom:10px;overflow:hidden}
+  .acc button{width:100%;text-align:start;padding:20px 24px;font-weight:600;font-size:16px;display:flex;justify-content:space-between;gap:14px;color:var(--d)}
+  .acc button::after{content:'+';font-size:22px;color:var(--t);transition:.3s;line-height:1}
+  .acc.open button::after{transform:rotate(45deg)}
+  .acc p{max-height:0;overflow:hidden;padding:0 24px;color:var(--mu);line-height:1.8;font-size:15px;transition:.35s}
+  .acc.open p{max-height:200px;padding-bottom:20px}
+  footer{background:var(--d);color:#CDEBE5;border-radius:40px 40px 0 0;padding:40px 0}
+  footer .w{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:14px}
+  footer .brand{color:#fff}
+  @media(max-width:860px){
+    .links{display:none}
+    .hero,.fq,.bento,.steps{grid-template-columns:1fr}
+    .bx:nth-child(n){grid-column:auto}
+  }
+}
+</style>
+<div class="view" id="v-shifa" data-n="عيادات شفاء|Shifa Clinics" data-k="عيادات طبية|Medical clinics" data-d="موقع هادئ بألوان ناعمة لمجمع عيادات، مع أداة حجز تفاعلية لاختيار التخصص والوقت.|A calm, soft-toned site for a clinic group, with an interactive widget to pick a specialty and time slot." data-c="#0E9384,#FF7A59">
+  <nav>
+    <a href="#" data-go="v-shifa" class="brand"><svg class="logo"><use href="#lg-shifa"/></svg><span data-ar="عيادات شفاء" data-en="Shifa Clinics"></span></a>
+    <div class="links"><a href="#" data-go="sh-s" data-ar="خدماتنا" data-en="Services"></a><a href="#" data-go="sh-t" data-ar="كيف تحجز" data-en="How to book"></a><a href="#" data-go="sh-q" data-ar="الأسئلة" data-en="FAQ"></a></div>
+    <div class="cta"><button class="lang"><svg class="ic"><use href="#globe"/></svg><span>EN</span></button><a href="#" data-go="sh-w" class="btn" data-ar="احجز موعداً" data-en="Book a visit"></a></div>
+  </nav>
+
+  <header class="w hero">
+    <div>
+      <span class="pill"><i data-ar="جديد" data-en="New"></i><span data-ar="نتائج التحاليل تصلك على جوالك" data-en="Lab results delivered to your phone"></span></span>
+      <h1><span data-ar="رعاية طبية " data-en="Medical care "></span><em data-ar="تطمئن لها" data-en="you can trust"></em></h1>
+      <p data-ar="نخبة من الأطباء في مكان واحد. اختر التخصص والوقت المناسب، واترك لنا تنظيم زيارتك من الاستقبال حتى المتابعة." data-en="Experienced doctors in one place. Pick a specialty and a time, and let us organize your visit from reception to follow-up."></p>
+      <div class="acts"><a href="#" data-go="sh-w" class="btn" data-ar="احجز موعداً" data-en="Book a visit"></a><a href="#" data-go="sh-s" class="btn s" data-ar="تعرّف على خدماتنا" data-en="See our services"></a></div>
+      <div class="chips">
+        <div><b data-count="24" data-suf="+">0</b><span data-ar="طبيب" data-en="Doctors"></span></div>
+        <div><b data-count="12">0</b><span data-ar="تخصص" data-en="Specialties"></span></div>
+        <div><b data-count="15000" data-suf="+">0</b><span data-ar="مراجع" data-en="Patients"></span></div>
+      </div>
+    </div>
+    <form class="wd" id="sh-w">
+      <h3 data-ar="احجز في ثلاث ضغطات" data-en="Book in three taps"></h3>
+      <small data-ar="1. اختر التخصص" data-en="1. Choose a specialty"></small>
+      <div class="seg">
+        <button type="button" class="on" data-tab="shw:a" data-ar="طب الأسرة" data-en="Family"></button>
+        <button type="button" data-tab="shw:b" data-ar="الأسنان" data-en="Dental"></button>
+        <button type="button" data-tab="shw:c" data-ar="الجلدية" data-en="Skin"></button>
+      </div>
+      <div class="doc on" data-pane="shw:a"><i><svg class="ic"><use href="#user"/></svg></i><div><b data-ar="د. سارة العمري" data-en="Dr. Sara Al-Omari"></b><small data-ar="استشارية طب الأسرة" data-en="Family medicine consultant"></small></div><em>120 SAR</em></div>
+      <div class="doc" data-pane="shw:b"><i><svg class="ic"><use href="#user"/></svg></i><div><b data-ar="د. خالد المنصور" data-en="Dr. Khalid Al-Mansour"></b><small data-ar="أخصائي طب وتجميل الأسنان" data-en="Dental and cosmetic specialist"></small></div><em>150 SAR</em></div>
+      <div class="doc" data-pane="shw:c"><i><svg class="ic"><use href="#user"/></svg></i><div><b data-ar="د. ليان الحسن" data-en="Dr. Layan Al-Hasan"></b><small data-ar="استشارية الأمراض الجلدية" data-en="Dermatology consultant"></small></div><em>180 SAR</em></div>
+      <small data-ar="2. اختر الوقت" data-en="2. Choose a time"></small>
+      <div class="pick"><button type="button">09:30</button><button type="button" class="on">10:30</button><button type="button">12:00</button><button type="button">16:15</button></div>
+      <button class="btn" data-ar="3. أكّد الموعد" data-en="3. Confirm visit"></button>
+      <p class="ok" data-ar="تم حجز موعدك مبدئياً، سنرسل لك رسالة تأكيد." data-en="Your visit is pencilled in. We will send a confirmation message."></p>
+    </form>
+  </header>
+
+  <section class="w sv" id="sh-s">
+    <h2 class="rv" data-ar="كل ما تحتاجه في زيارة واحدة" data-en="Everything you need in one visit"></h2>
+    <div class="bento rv">
+      <div class="bx"><svg class="ic"><use href="#cal"/></svg><div><h3 data-ar="حجز أونلاين" data-en="Online booking"></h3><p data-ar="اختر التخصص والوقت وأكّد موعدك في أقل من دقيقة، بدون اتصال." data-en="Pick a specialty and time and confirm in under a minute, no call needed."></p></div></div>
+      <div class="bx"><svg class="ic"><use href="#search"/></svg><div><h3 data-ar="مختبر وأشعة" data-en="Lab and imaging"></h3><p data-ar="فحوصاتك تُجرى داخل المجمع وتصلك نتائجها إلكترونياً." data-en="Tests are done on site and results reach you electronically."></p></div></div>
+      <div class="bx"><svg class="ic"><use href="#doc"/></svg><div><h3 data-ar="ملف طبي إلكتروني" data-en="Electronic records"></h3><p data-ar="زياراتك ووصفاتك في مكان واحد." data-en="Your visits and prescriptions in one place."></p></div></div>
+      <div class="bx"><svg class="ic"><use href="#bell"/></svg><div><h3 data-ar="تذكير بالمواعيد" data-en="Visit reminders"></h3><p data-ar="رسالة قبل موعدك مع إمكانية التأجيل." data-en="A message before your visit, with rescheduling."></p></div></div>
+      <div class="bx"><svg class="ic"><use href="#shield"/></svg><div><h3 data-ar="تأمين طبي" data-en="Insurance"></h3><p data-ar="نتولى إجراءات الموافقة مع شركة التأمين." data-en="We handle approvals with your insurer."></p></div></div>
+    </div>
+  </section>
+
+  <section class="w steps rv" id="sh-t">
+    <div class="sp"><h3 data-ar="اختر التخصص" data-en="Choose a specialty"></h3><p data-ar="من بين 12 تخصصاً، مع عرض سعر الكشف قبل الحجز." data-en="From 12 specialties, with the fee shown before you book."></p></div>
+    <div class="sp"><h3 data-ar="حدّد الوقت" data-en="Pick a time"></h3><p data-ar="المواعيد المتاحة تظهر لك مباشرة." data-en="Available slots appear right away."></p></div>
+    <div class="sp"><h3 data-ar="احضر في موعدك" data-en="Arrive on time"></h3><p data-ar="متوسط الانتظار عندنا خمس دقائق." data-en="Our average wait is five minutes."></p></div>
+  </section>
+
+  <section class="w fq" id="sh-q">
+    <h2 data-ar="أسئلة تتكرر قبل الزيارة" data-en="Common questions before a visit"></h2>
+    <div>
+      <div class="acc open"><button data-ar="هل تقبلون التأمين الطبي؟" data-en="Do you accept insurance?"></button><p data-ar="نعم، نتعامل مع أغلب شركات التأمين. أحضر بطاقتك وسيتولى الاستقبال الباقي." data-en="Yes, we work with most insurers. Bring your card and reception handles the rest."></p></div>
+      <div class="acc"><button data-ar="كيف ألغي أو أؤجل موعدي؟" data-en="How do I cancel or reschedule?"></button><p data-ar="من رابط رسالة التأكيد أو بالاتصال على الاستقبال قبل الموعد بثلاث ساعات." data-en="Use the link in your confirmation message or call reception three hours ahead."></p></div>
+      <div class="acc"><button data-ar="هل يوجد قسم للحالات العاجلة؟" data-en="Do you handle urgent cases?"></button><p data-ar="عيادة الرعاية العاجلة تستقبل الحالات غير الحرجة بدون موعد." data-en="Our urgent care clinic sees non-critical cases without an appointment."></p></div>
+    </div>
+  </section>
+  <footer><div class="w"><div class="brand"><svg class="logo"><use href="#lg-shifa"/></svg><span data-ar="عيادات شفاء" data-en="Shifa Clinics"></span></div><span data-ar="حي الملقا، الرياض — يومياً 8 ص إلى 10 م" data-en="Al Malqa, Riyadh — daily 8 AM to 10 PM"></span><span data-ar="© 2026 عيادات شفاء" data-en="© 2026 Shifa Clinics"></span></div></footer>
+</div>
+
+<!-- ============================================================
+     PROJECT 4 — DAR  (dark luxury / sharp lines)
+============================================================ -->
+<style>
+#v-dar{
+  --g:#C9A45C;--bg:#0E0F11;--ln:#2A2C30;--mu:#8B8A85;
+  background:var(--bg);color:#EDE9E0;font-family:'Plus Jakarta Sans','Tajawal',sans-serif;
+  .rv{transform:translateX(-46px)}
+  h1,h2,h3{font-family:'Playfair Display','El Messiri',serif;font-weight:500}
+  nav{border-bottom:1px solid var(--ln)}
+  nav .w{display:flex;justify-content:space-between;align-items:center;height:80px}
+  .brand{display:flex;gap:12px;align-items:center;font:500 20px 'Playfair Display','El Messiri',serif}
+  .logo{width:42px;height:42px;border:1px solid var(--g)}
+  .links{display:flex;gap:34px;font-size:13.5px;color:var(--mu)}
+  .links a{transition:.3s}
+  .links a:hover{color:var(--g)}
+  .cta{display:flex;gap:10px;align-items:center}
+  .lang{display:inline-flex;gap:6px;align-items:center;font-size:12.5px;padding:12px 14px;border:1px solid var(--ln)}
+  .btn{display:inline-flex;gap:10px;align-items:center;justify-content:center;padding:13px 26px;border:1px solid var(--g);color:var(--g);font-size:14px;font-weight:600;transition:.4s;background:linear-gradient(var(--g),var(--g)) no-repeat 0 100%/100% 0}
+  .btn:hover{background-size:100% 100%;color:#0E0F11}
+  .btn.f{background-size:100% 100%;color:#0E0F11}
+  .btn.f:hover{background-size:100% 0;color:var(--g)}
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;padding-block:70px}
+  .lbl{font-size:12.5px;color:var(--g);display:flex;gap:14px;align-items:center;margin-bottom:26px}
+  .lbl::before{content:'';width:50px;height:1px;background:var(--g)}
+  h1{font-size:clamp(42px,6vw,88px);line-height:1.18}
+  h1 em{font-style:italic;color:var(--g);display:block}
+  .hero p{color:var(--mu);font-size:17px;line-height:1.95;max-width:500px;margin:28px 0 36px}
+  .acts{display:flex;gap:12px;flex-wrap:wrap}
+  .figs{display:flex;gap:44px;margin-top:54px;padding-top:30px;border-top:1px solid var(--ln)}
+  .figs b{font:500 38px 'Playfair Display',serif;color:var(--g);display:block}
+  .figs span{font-size:12.5px;color:var(--mu)}
+  .art{position:relative;aspect-ratio:4/5;border:1px solid var(--ln);background:linear-gradient(180deg,#1B1E22,#0E0F11);overflow:hidden}
+  .art::before{content:'';position:absolute;top:12%;right:14%;width:70px;height:70px;border-radius:50%;background:radial-gradient(circle,#E8CF96,var(--g));box-shadow:0 0 80px rgba(201,164,92,.5)}
+  .art i{position:absolute;bottom:0;background:linear-gradient(180deg,#2B2F35,#17191C);border-top:1px solid var(--g);transition:height 1.4s cubic-bezier(.2,.8,.2,1)}
+  .art i::after{content:'';position:absolute;inset:14px 12px 0;background:repeating-linear-gradient(180deg,rgba(201,164,92,.5) 0 5px,transparent 5px 22px);-webkit-mask:repeating-linear-gradient(90deg,#000 0 8px,transparent 8px 20px);mask:repeating-linear-gradient(90deg,#000 0 8px,transparent 8px 20px)}
+  .art i:nth-of-type(1){left:8%;width:26%;height:52%}
+  .art i:nth-of-type(2){left:36%;width:30%;height:78%}
+  .art i:nth-of-type(3){left:68%;width:24%;height:40%}
+  .art:hover i:nth-of-type(1){height:60%}
+  .art:hover i:nth-of-type(2){height:84%}
+  .art:hover i:nth-of-type(3){height:50%}
+  .tagc{position:absolute;inset-inline-start:0;bottom:0;background:var(--g);color:#0E0F11;padding:18px 24px;z-index:2;text-align:start}
+  .tagc small{font-size:12px;display:block;opacity:.75}
+  .tagc b{font:500 26px 'Playfair Display',serif}
+  .blk{padding-block:90px;border-top:1px solid var(--ln)}
+  h2{font-size:clamp(32px,4.4vw,58px);margin-bottom:44px;line-height:1.25}
+  .r{display:grid;grid-template-columns:60px 1.4fr 1.3fr 1fr 30px;gap:20px;align-items:center;padding:28px 18px;border-top:1px solid var(--ln);transition:.4s;cursor:pointer}
+  .r:last-child{border-bottom:1px solid var(--ln)}
+  .r:hover{background:var(--g);padding-inline:30px}
+  .r:hover *{color:#0E0F11}
+  .r i{font:500 14px 'Playfair Display',serif;color:var(--g);font-style:normal}
+  .r h3{font-size:24px}
+  .r span{color:var(--mu);font-size:14px}
+  .r b{font:500 24px 'Playfair Display',serif;color:var(--g)}
+  .r .ic{font-size:22px}
+  .calc{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+  .calc h2{margin-bottom:16px}
+  .calc>div>p{color:var(--mu);line-height:1.9;margin-bottom:36px}
+  .calc label{display:flex;flex-wrap:wrap;justify-content:space-between;margin-bottom:30px;font-size:14px;color:var(--mu)}
+  .calc label b{color:#EDE9E0;font-weight:600}
+  input[type=range]{width:100%;margin-top:16px;appearance:none;-webkit-appearance:none;height:2px;background:var(--ln);outline:0}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;background:var(--g);transform:rotate(45deg);cursor:pointer}
+  input[type=range]::-moz-range-thumb{width:16px;height:16px;background:var(--g);border:0;border-radius:0;transform:rotate(45deg);cursor:pointer}
+  .res{border:1px solid var(--g);padding:44px;text-align:center}
+  .res small{color:var(--mu);font-size:13px}
+  .res strong{display:block;font:500 clamp(44px,5.6vw,72px)/1.25 'Playfair Display',serif;color:var(--g);direction:ltr}
+  .res div{display:flex;justify-content:space-between;border-top:1px solid var(--ln);margin-top:26px;padding-top:18px;font-size:14px}
+  .res p{color:var(--mu);font-size:12.5px;margin-top:18px;line-height:1.8}
+  .ct{display:grid;grid-template-columns:1fr 1fr;gap:70px}
+  .ct h2{margin-bottom:18px}
+  .ct>div>p{color:var(--mu);line-height:1.9}
+  .inf{margin-top:30px;display:grid;gap:14px;font-size:15px}
+  .inf span{display:flex;gap:12px;align-items:center}
+  .inf .ic{color:var(--g)}
+  form{display:grid;gap:26px}
+  form label{font-size:12.5px;color:var(--mu);display:block}
+  form input,form select{width:100%;background:none;border:0;border-bottom:1px solid var(--ln);padding:12px 0;color:#EDE9E0;outline:0;transition:.3s;color-scheme:dark}
+  form input:focus,form select:focus{border-color:var(--g)}
+  .ok{color:var(--g);font-size:14px}
+  footer{border-top:1px solid var(--ln);padding-block:30px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--mu)}
+  @media(max-width:860px){
+    .links{display:none}
+    .hero,.calc,.ct{grid-template-columns:1fr}
+    .r{grid-template-columns:36px 1fr auto}
+    .r span,.r .ic{display:none}
+  }
+}
+</style>
+<div class="view" id="v-dar" data-n="دار العقارية|Dar Real Estate" data-k="شركة عقارات|Real estate company" data-d="موقع داكن بطابع فاخر لشركة عقارية، مع قائمة عقارات وحاسبة تمويل تفاعلية.|A dark, premium site for a real estate company, with a listings table and an interactive financing calculator." data-c="#16181B,#C9A45C">
+  <nav><div class="w">
+    <a href="#" data-go="v-dar" class="brand"><svg class="logo"><use href="#lg-dar"/></svg><span data-ar="دار العقارية" data-en="Dar Real Estate"></span></a>
+    <div class="links"><a href="#" data-go="dr-list" data-ar="العقارات" data-en="Listings"></a><a href="#" data-go="dr-calc" data-ar="حاسبة التمويل" data-en="Calculator"></a><a href="#" data-go="dr-ct" data-ar="تواصل" data-en="Contact"></a></div>
+    <div class="cta"><button class="lang"><svg class="ic"><use href="#globe"/></svg><span>EN</span></button><a href="#" data-go="dr-ct" class="btn" data-ar="اطلب معاينة" data-en="Request a viewing"></a></div>
+  </div></nav>
+
+  <header class="w hero">
+    <div>
+      <div class="lbl" data-ar="عقارات مختارة في الرياض" data-en="Curated properties in Riyadh"></div>
+      <h1><span data-ar="بيتك القادم" data-en="Your next home"></span><em data-ar="يبدأ من هنا" data-en="starts here"></em></h1>
+      <p data-ar="نساعدك في شراء أو بيع أو تأجير عقارك بثقة: عروض موثّقة، أسعار عادلة، ومستشار يرافقك حتى استلام المفتاح." data-en="We help you buy, sell or rent with confidence: verified listings, fair prices, and an advisor with you until you get the keys."></p>
+      <div class="acts"><a href="#" data-go="dr-list" class="btn f"><span data-ar="تصفح العقارات" data-en="Browse listings"></span><svg class="ic flip"><use href="#arrow"/></svg></a><a href="#" data-go="dr-calc" class="btn" data-ar="احسب قسطك" data-en="Estimate payments"></a></div>
+      <div class="figs">
+        <div><b data-count="320" data-suf="+">0</b><span data-ar="عقار متاح" data-en="Listings"></span></div>
+        <div><b data-count="14">0</b><span data-ar="حي نغطيه" data-en="Districts"></span></div>
+        <div><b data-count="1200" data-suf="+">0</b><span data-ar="عميل" data-en="Clients"></span></div>
+      </div>
+    </div>
+    <div class="art"><i></i><i></i><i></i><div class="tagc"><small data-ar="فيلا — حي الياسمين" data-en="Villa — Al Yasmin"></small><b>2.4M SAR</b></div></div>
+  </header>
+
+  <section class="blk" id="dr-list"><div class="w">
+    <h2 class="rv" data-ar="اختيارات هذا الأسبوع" data-en="This week's selection"></h2>
+    <div class="rv">
+      <a class="r" data-go="dr-ct"><i>01</i><h3 data-ar="فيلا — حي الياسمين" data-en="Villa — Al Yasmin"></h3><span data-ar="5 غرف · 420 م² · مسبح خاص" data-en="5 beds · 420 m² · private pool"></span><b>2.4M</b><svg class="ic flip"><use href="#arrow"/></svg></a>
+      <a class="r" data-go="dr-ct"><i>02</i><h3 data-ar="دوبلكس — حي الملقا" data-en="Duplex — Al Malqa"></h3><span data-ar="4 غرف · 310 م² · مدخل مستقل" data-en="4 beds · 310 m² · private entrance"></span><b>1.6M</b><svg class="ic flip"><use href="#arrow"/></svg></a>
+      <a class="r" data-go="dr-ct"><i>03</i><h3 data-ar="شقة — حي النرجس" data-en="Apartment — Al Narjis"></h3><span data-ar="3 غرف · 165 م² · موقف ومصعد" data-en="3 beds · 165 m² · parking and lift"></span><b>780K</b><svg class="ic flip"><use href="#arrow"/></svg></a>
+      <a class="r" data-go="dr-ct"><i>04</i><h3 data-ar="مكتب — حي العليا" data-en="Office — Al Olaya"></h3><span data-ar="140 م² · تشطيب كامل · للإيجار السنوي" data-en="140 m² · fully fitted · yearly rent"></span><b>95K</b><svg class="ic flip"><use href="#arrow"/></svg></a>
+    </div>
+  </div></section>
+
+  <section class="blk" id="dr-calc"><div class="w calc">
+    <div class="rv">
+      <h2 data-ar="حاسبة التمويل" data-en="Financing calculator"></h2>
+      <p data-ar="حرّك المؤشرات لتحصل على قسط شهري تقديري قبل أن تتحدث مع المستشار." data-en="Move the sliders for an estimated monthly payment before you talk to an advisor."></p>
+      <label><span data-ar="سعر العقار" data-en="Property price"></span><b id="dr-pv"></b><input type="range" id="dr-p" min="300000" max="5000000" step="50000" value="1600000"></label>
+      <label><span data-ar="الدفعة الأولى" data-en="Down payment"></span><b id="dr-dv"></b><input type="range" id="dr-d" min="10" max="50" step="5" value="20"></label>
+      <label><span data-ar="مدة التمويل (سنة)" data-en="Term (years)"></span><b id="dr-yv"></b><input type="range" id="dr-y" min="5" max="25" value="20"></label>
+    </div>
+    <div class="res rv">
+      <small data-ar="القسط الشهري التقديري" data-en="Estimated monthly payment"></small>
+      <strong><span id="dr-m"></span> <small>SAR</small></strong>
+      <div><span data-ar="مبلغ التمويل" data-en="Financed amount"></span><b id="dr-lv"></b></div>
+      <p data-ar="حساب تقديري بمعدل ربح سنوي 4.5%، ولا يُعد عرض تمويل." data-en="An estimate at a 4.5% annual rate. This is not a financing offer."></p>
+    </div>
+  </div></section>
+
+  <section class="blk" id="dr-ct"><div class="w ct">
+    <div class="rv">
+      <h2 data-ar="أخبرنا عمّا تبحث عنه" data-en="Tell us what you are looking for"></h2>
+      <p data-ar="يتواصل معك مستشار عقاري خلال يوم عمل واحد." data-en="An advisor will contact you within one business day."></p>
+      <div class="inf">
+        <span><svg class="ic"><use href="#phone"/></svg><b class="ltr">+966 55 000 0000</b></span>
+        <span><svg class="ic"><use href="#pin"/></svg><span data-ar="حي العليا، الرياض" data-en="Al Olaya District, Riyadh"></span></span>
+        <span><svg class="ic"><use href="#clock"/></svg><span data-ar="السبت — الخميس، 9 ص — 9 م" data-en="Sat — Thu, 9 AM — 9 PM"></span></span>
+      </div>
+    </div>
+    <form class="rv">
+      <label><span data-ar="الاسم" data-en="Name"></span><input type="text" required></label>
+      <label><span data-ar="رقم الجوال" data-en="Mobile"></span><input type="tel" required></label>
+      <label><span data-ar="نوع الطلب" data-en="Request type"></span><select><option data-ar="شراء" data-en="Buy"></option><option data-ar="إيجار" data-en="Rent"></option><option data-ar="بيع عقاري" data-en="Sell my property"></option></select></label>
+      <button class="btn f" data-ar="أرسل الطلب" data-en="Send request"></button>
+      <p class="ok" data-ar="تم استلام طلبك، سيتواصل معك مستشارنا قريباً." data-en="Request received. Our advisor will contact you soon."></p>
+    </form>
+  </div></section>
+  <footer class="w"><span data-ar="© 2026 دار العقارية. جميع الحقوق محفوظة." data-en="© 2026 Dar Real Estate. All rights reserved."></span><span>Riyadh · KSA</span></footer>
+  <script>(()=>{const g=i=>document.getElementById(i),f=n=>Math.round(n).toLocaleString('en-US'),u=()=>{const P=+g('dr-p').value,d=+g('dr-d').value,y=+g('dr-y').value,L=P*(1-d/100),r=.045/12,n=y*12,m=L*r/(1-Math.pow(1+r,-n));g('dr-pv').textContent=f(P)+' SAR';g('dr-dv').textContent=d+'%';g('dr-yv').textContent=y;g('dr-m').textContent=f(m);g('dr-lv').textContent=f(L)+' SAR'};['dr-p','dr-d','dr-y'].forEach(i=>g(i).oninput=u);u()})()</script>
+</div>
+
+<!-- ▼▼▼ الصق الجزء الثاني هنا (المشاريع 5 و 6 و 7) ▼▼▼ -->
+
+<!-- ▲▲▲ نهاية مكان الجزء الثاني ▲▲▲ -->
+
+<a class="back" href="#"><svg class="ic"><use href="#arrow"/></svg><span data-ar="رجوع للمعرض" data-en="Back to portfolio"></span></a>
+
+<script>
+/* ============ Helpers ============ */
+const H = document.documentElement;
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+/* ============ Build portfolio cards from the project views ============ */
+const grid = document.getElementById('pgrid');
+const projects = $$('.view[data-n]');
+projects.forEach((v, i) => {
+  const s = k => v.dataset[k].split('|');
+  const [na, ne] = s('n'), [ka, ke] = s('k'), [da, de] = s('d');
+  const [c1, c2] = v.dataset.c.split(',');
+  const id = v.id.slice(2);
+  grid.insertAdjacentHTML('beforeend',
+    `<a class="pc rv" href="#${id}" style="--c1:${c1};--c2:${c2}">
+       <div class="pv"><span class="pn">${String(i + 1).padStart(2, '0')}</span><svg class="plogo"><use href="#lg-${id}"/></svg></div>
+       <div class="pt"><small data-ar="${ka}" data-en="${ke}"></small><h3 data-ar="${na}" data-en="${ne}"></h3><p data-ar="${da}" data-en="${de}"></p><span class="parr"><svg class="ic flip"><use href="#arrow"/></svg></span></div>
+     </a>`);
+});
+$$('[data-pcount]').forEach(e => { e.textContent = String(projects.length).padStart(2, '0'); });
+
+/* ============ Language ============ */
+function setLang(l) {
+  H.lang = l;
+  H.dir = l === 'ar' ? 'rtl' : 'ltr';
+  H.dataset.lang = l;
+  $$('[data-ar]').forEach(e => { e.textContent = e.dataset[l]; });
+  $$('.lang span').forEach(e => { e.textContent = l === 'ar' ? 'EN' : 'AR'; });
+  document.title = l === 'ar' ? 'محمد علاء الدين — Website Builder' : 'Mohammed Alaaeldeen — Website Builder';
+  try { localStorage.setItem('pf-lang', l); } catch (e) {}
+}
+let startLang = 'ar';
+try { startLang = localStorage.getItem('pf-lang') || 'ar'; } catch (e) {}
+setLang(startLang);
+
+/* ============ Router: #sufra opens the view with id="v-sufra" ============ */
+function route() {
+  const target = document.getElementById('v-' + location.hash.slice(1));
+  const view = target && target.classList.contains('view') ? target : document.getElementById('v-home');
+  $$('.view').forEach(e => e.classList.toggle('on', e === view));
+  document.body.classList.toggle('inproj', view.id !== 'v-home');
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+window.addEventListener('hashchange', route);
+route();
+
+/* ============ Clicks: scroll links, language, tabs, pickers, accordions ============ */
+document.addEventListener('click', e => {
+  const go = e.target.closest('[data-go]');
+  if (go) {
+    e.preventDefault();
+    const t = document.getElementById(go.dataset.go);
+    if (t) t.scrollIntoView({ behavior: 'smooth' });
+    return;
+  }
+  if (e.target.closest('.lang')) { setLang(H.dataset.lang === 'ar' ? 'en' : 'ar'); return; }
+  const tab = e.target.closest('[data-tab]');
+  if (tab) {
+    const group = tab.dataset.tab.split(':')[0];
+    $$(`[data-tab^="${group}:"]`).forEach(x => x.classList.toggle('on', x === tab));
+    $$(`[data-pane^="${group}:"]`).forEach(x => x.classList.toggle('on', x.dataset.pane === tab.dataset.tab));
+    return;
+  }
+  const pick = e.target.closest('.pick > *');
+  if (pick) { [...pick.parentElement.children].forEach(x => x.classList.toggle('on', x === pick)); return; }
+  const acc = e.target.closest('.acc > button');
+  if (acc) acc.parentElement.classList.toggle('open');
+});
+
+/* ============ Forms ============ */
+document.addEventListener('submit', e => { e.preventDefault(); e.target.classList.add('sent'); });
+
+/* ============ Reveal on scroll + counters ============ */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (!en.isIntersecting) return;
+    const t = en.target;
+    io.unobserve(t);
+    if (t.dataset.count) {
+      const n = +t.dataset.count, suf = t.dataset.suf || '', t0 = performance.now();
+      (function step(now) {
+        const k = Math.min((now - t0) / 1500, 1);
+        const val = Math.round(n * (1 - Math.pow(1 - k, 3)));
+        t.textContent = (n > 2100 || n < 1900 ? val.toLocaleString('en-US') : val) + suf;
+        if (k < 1) requestAnimationFrame(step);
+      })(t0);
+    } else {
+      t.classList.add('in');
+    }
+  });
+}, { threshold: 0.08 });
+$$('.rv,[data-count]').forEach(e => io.observe(e));
+</script>
+</body>
+</html>
